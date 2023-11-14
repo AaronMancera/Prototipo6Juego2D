@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movimiento")]
     [SerializeField] private float velocidad;
     private float horizontal;
     private float vertical;
     private Rigidbody2D rb;
     private Vector2 position;
+    [Header("Vida")]
+    [SerializeField]private int maximaVida;
+    private int vidaActual;
+    private float tiempoDeRecuperacionDeDaño;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        vidaActual = maximaVida;
+        tiempoDeRecuperacionDeDaño = 1.5f;
+        
     }
 
     // Update is called once per frame
@@ -27,7 +36,7 @@ public class PlayerController : MonoBehaviour
         ////transform.position = position;
         //rb.MovePosition(position);
         CogerInput();
-
+        DecrementacionDelTemporizador();
     }
     private void FixedUpdate()
     {
@@ -46,5 +55,17 @@ public class PlayerController : MonoBehaviour
         position.y = position.y + velocidad * vertical;
         //transform.position = position;
         rb.MovePosition(position);
+    }
+    private void DecrementacionDelTemporizador()
+    {
+        tiempoDeRecuperacionDeDaño-=Time.deltaTime;
+    }
+    public void DañarJugador()
+    {
+        if (tiempoDeRecuperacionDeDaño <=0)
+        {
+            vidaActual--;
+            tiempoDeRecuperacionDeDaño = 1.5f;
+        }
     }
 }
