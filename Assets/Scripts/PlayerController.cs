@@ -12,16 +12,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 position;
     [Header("Vida")]
-    [SerializeField]private int maximaVida;
-    private int vidaActual;
-    private float tiempoDeRecuperacionDeDaño;
+    [SerializeField] private int maximaVida;
+    [SerializeField] private int vidaActual;
+    [SerializeField] private float tiempoDeRecuperacionDeDaño;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         vidaActual = maximaVida;
         tiempoDeRecuperacionDeDaño = 1.5f;
-        
+
     }
 
     // Update is called once per frame
@@ -58,14 +58,25 @@ public class PlayerController : MonoBehaviour
     }
     private void DecrementacionDelTemporizador()
     {
-        tiempoDeRecuperacionDeDaño-=Time.deltaTime;
+        tiempoDeRecuperacionDeDaño -= Time.deltaTime;
+    }
+    public float getTiempoDeRecuperacionDeDaño()
+    {
+        return tiempoDeRecuperacionDeDaño;
     }
     public void DañarJugador()
     {
-        if (tiempoDeRecuperacionDeDaño <=0)
-        {
             vidaActual--;
             tiempoDeRecuperacionDeDaño = 1.5f;
+        
+    }
+
+    public void CurarJugador(GameObject objetoCurativo)
+    {
+        if (vidaActual < maximaVida)
+        {
+            vidaActual++;
+            Destroy(objetoCurativo);
         }
     }
 }
