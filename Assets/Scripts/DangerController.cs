@@ -23,7 +23,6 @@ public class DangerController : MonoBehaviour
             if (controller.getTiempoDeRecuperacionDeDaño() <= 0)
             {
                 controller.DañarJugador();
-                Debug.Log("Holaaa");
             }
         }
         

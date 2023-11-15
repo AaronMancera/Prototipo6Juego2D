@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float velocidad;
     private float horizontal;
     private float vertical;
-    private Rigidbody2D rb;
+    private Rigidbody2D rb2d;
     private Vector2 position;
     [Header("Vida")]
     [SerializeField] private int maximaVida;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         vidaActual = maximaVida;
         tiempoDeRecuperacionDeDaño = 1.5f;
 
@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour
     }
     private void MoverJugador()
     {
-        position = rb.position;
+        position = rb2d.position;
         position.x = position.x + velocidad * horizontal;
         position.y = position.y + velocidad * vertical;
         //transform.position = position;
-        rb.MovePosition(position);
+        rb2d.MovePosition(position);
     }
     private void DecrementacionDelTemporizador()
     {
