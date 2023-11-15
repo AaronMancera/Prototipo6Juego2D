@@ -63,4 +63,12 @@ public class EnemyController : MonoBehaviour
         }
         rb2d.MovePosition(nuevaPosicion);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerController controller = collision.GetComponent<PlayerController>();
+        if(controller != null )
+        {
+            controller.DañarJugador();
+        }
+    }
 }

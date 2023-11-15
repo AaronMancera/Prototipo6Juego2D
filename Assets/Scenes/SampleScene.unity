@@ -3903,6 +3903,10 @@ PrefabInstance:
       propertyPath: tiempoDeCambioDireccion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1683274450901197789, guid: caadd7e454681464885df18fd14f1358, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1685303704742556750, guid: caadd7e454681464885df18fd14f1358, type: 3}
       propertyPath: m_Name
       value: Enemigo
