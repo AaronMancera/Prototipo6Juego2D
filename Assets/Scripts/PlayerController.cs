@@ -15,12 +15,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int maximaVida;
     [SerializeField] private int vidaActual;
     [SerializeField] private float tiempoDeRecuperacionDeDaño;
+    [Header("Animaciones")]
+    [SerializeField] private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         vidaActual = maximaVida;
         tiempoDeRecuperacionDeDaño = 1.5f;
+        animator = GetComponent<Animator>();
 
     }
 
