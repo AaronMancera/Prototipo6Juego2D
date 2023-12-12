@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [Header("Animaciones")]
     [SerializeField] private Animator animator;
     [SerializeField] private Vector2 lookDirection;
+    [Header("Pryectil")]
+    [SerializeField] private GameObject prefabProyectil;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,10 @@ public class PlayerController : MonoBehaviour
         //rb.MovePosition(position);
         CogerInput();
         DecrementacionDelTemporizador();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Disparar();
+        }
     }
     private void FixedUpdate()
     {
@@ -59,8 +66,8 @@ public class PlayerController : MonoBehaviour
     }
     private void MoverJugador()
     {
-        Vector2 movimiento = new Vector2(horizontal,vertical);
-       
+        Vector2 movimiento = new Vector2(horizontal, vertical);
+
         if (movimiento.x != 0.0f || movimiento.y != 0.0f)
         {
             lookDirection.Set(movimiento.x, movimiento.y);
@@ -102,4 +109,20 @@ public class PlayerController : MonoBehaviour
             Destroy(objetoCurativo);
         }
     }
+    private void Disparar()
+    {
+        GameObject proyectilGameObject = Instantiate(prefabProyectil, rb2d.position + Vector2.up * 0.5f, Quaternion.identity);
+        //Proyectil proyectil = projectileObject.GetComponent<Proyectil>();
+        if (proyectilGameObject.GetComponent<Proyectil>() == null)
+        {
+            Debug.LogError("Error en el prefab");
+        }
+        else
+        {
+            proyectilGameObject.GetComponent<Proyectil>().Disparo(lookDirection, 300f);
+        }
+        //proyectil.Disparo(lookDirection, 300);
+        animator.SetTrigger("Launch");
+    }
+
 }

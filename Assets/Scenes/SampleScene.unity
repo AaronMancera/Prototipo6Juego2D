@@ -5563,6 +5563,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1
+  - first: {x: 0, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 30
+      m_TileSpriteIndex: 30
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1
   - first: {x: 1, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -9995,7 +10005,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4ff32cc3d94ebed4f96c093316500411, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a785782f9b1d7e2419c408019d669ab1, type: 2}
-  - m_RefCount: 9
+  - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: 1a85fdee866dc4940bdf94d5b529905b, type: 2}
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: cbc56fe3749507d41bf8c1d15e16da2b, type: 2}
@@ -10084,7 +10094,7 @@ Tilemap:
     m_Data: {fileID: -1809768655, guid: df0b6f9e93b65bc4792e6cf7849c5e37, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -726201459, guid: df0b6f9e93b65bc4792e6cf7849c5e37, type: 3}
-  - m_RefCount: 9
+  - m_RefCount: 10
     m_Data: {fileID: 1759419859, guid: 2e6ecdf01ba70e3489b17b3f6525fec2, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 630618726, guid: 2e6ecdf01ba70e3489b17b3f6525fec2, type: 3}
@@ -10113,7 +10123,7 @@ Tilemap:
   - m_RefCount: 128
     m_Data: {fileID: 757970230, guid: df0b6f9e93b65bc4792e6cf7849c5e37, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 944
+  - m_RefCount: 945
     m_Data:
       e00: 1
       e01: 0
@@ -10132,7 +10142,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 944
+  - m_RefCount: 945
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -10655,6 +10665,10 @@ PrefabInstance:
     - target: {fileID: 1207130893473788003, guid: 9f64ab257bf6adb40be97d700df1588a, type: 3}
       propertyPath: m_Name
       value: Ruby
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207130893473788003, guid: 9f64ab257bf6adb40be97d700df1588a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5487664882294785601, guid: 9f64ab257bf6adb40be97d700df1588a, type: 3}
       propertyPath: m_LocalPosition.x

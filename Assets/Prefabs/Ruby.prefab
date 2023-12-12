@@ -105,6 +105,8 @@ MonoBehaviour:
   vidaActual: 0
   "tiempoDeRecuperacionDeDa\xF1o": 0
   animator: {fileID: 0}
+  lookDirection: {x: 0, y: 0}
+  prefabProyectil: {fileID: 1260130191826894458, guid: c68c2f2cfcdd5434e8977f462fb81893, type: 3}
 --- !u!61 &-6932711705387762526
 BoxCollider2D:
   m_ObjectHideFlags: 0

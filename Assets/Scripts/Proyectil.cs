@@ -5,10 +5,14 @@ using UnityEngine;
 public class Proyectil : MonoBehaviour
 {
     private Rigidbody2D rigidbody2d;
+    private void Awake()
+    {
+        rigidbody2d = GetComponent<Rigidbody2D>();
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -16,7 +20,7 @@ public class Proyectil : MonoBehaviour
     {
         
     }
-    private void Disparo(Vector2 direccion, float fuerza)
+    public void Disparo(Vector2 direccion, float fuerza)
     {
         rigidbody2d.AddForce(direccion * fuerza);
     }
