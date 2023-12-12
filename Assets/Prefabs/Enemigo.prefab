@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8561679206023240834}
   m_Layer: 0
   m_Name: Enemigo
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,3 +174,5 @@ MonoBehaviour:
   velocidad: 0.05
   tiempoDeCambioDireccion: 1
   temporizador: 0
+  vivo: 0
+  tiempoReparacion: 0
