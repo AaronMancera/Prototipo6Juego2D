@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float tiempoDeRecuperacionDeDaño;
     [Header("Animaciones")]
     [SerializeField] private Animator animator;
+    [SerializeField] private float lookX;
+    [SerializeField] private float lookY;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +52,32 @@ public class PlayerController : MonoBehaviour
     private void CogerInput()
     {
         horizontal = Input.GetAxis("Horizontal");
+        if (horizontal != 0)
+        {
+            lookX = horizontal;
+            lookY = 0;
+            animator.SetFloat("Speed", horizontal);
+
+        }
+        if (horizontal < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-1, transform.localScale.y);
+        }
+        else
+        {
+            gameObject.transform.localScale = new Vector3(1, transform.localScale.y);
+        }
         vertical = Input.GetAxis("Vertical");
+        if (vertical != 0)
+        {
+            lookY = vertical;
+            lookX = 0;
+            animator.SetFloat("Speed", vertical);
+        }
+        //Animacion de movimiento
+        animator.SetFloat("Look X", lookX);
+        animator.SetFloat("Look Y", lookY);
+
     }
     private void MoverJugador()
     {
@@ -69,9 +97,9 @@ public class PlayerController : MonoBehaviour
     }
     public void DañarJugador()
     {
-            vidaActual--;
-            tiempoDeRecuperacionDeDaño = 1.5f;
-        
+        vidaActual--;
+        tiempoDeRecuperacionDeDaño = 1.5f;
+
     }
 
     public void CurarJugador(GameObject objetoCurativo)
