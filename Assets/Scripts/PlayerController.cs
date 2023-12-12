@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         vidaActual--;
         tiempoDeRecuperacionDeDaño = 1.5f;
+        animator.SetTrigger("Hit");
 
     }
 
