@@ -66,10 +66,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Caminar()
     {
-
-        Debug.Log("hola");
         nuevaPosicion = rb2d.position;
-
         //nuevaPosicion.x = nuevaPosicion.x + velocidad;
         if (horizontal)
         {
