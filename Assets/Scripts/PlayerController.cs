@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float tiempoDeRecuperacionDeDaño;
     [Header("Animaciones")]
     [SerializeField] private Animator animator;
-    [SerializeField] private float lookX;
-    [SerializeField] private float lookY;
+    [SerializeField] private Vector2 lookDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
         vidaActual = maximaVida;
         tiempoDeRecuperacionDeDaño = 1.5f;
         animator = GetComponent<Animator>();
+        lookDirection = new Vector2(1, 0);
 
     }
 
@@ -52,32 +52,29 @@ public class PlayerController : MonoBehaviour
     private void CogerInput()
     {
         horizontal = Input.GetAxis("Horizontal");
-        if (horizontal != 0)
-        {
-            lookX = horizontal;
-            lookY = 0;
-            animator.SetFloat("Speed", horizontal < 0 ? horizontal * -1 : horizontal);
-
-
-        }
         vertical = Input.GetAxis("Vertical");
-        if (vertical != 0)
-        {
-            lookY = vertical;
-            lookX = 0;
-            animator.SetFloat("Speed", vertical);
+        animator.SetFloat("Speed", horizontal != 0 ? 1 : vertical != 0 ? 1 : 0);
 
-        }
-        //Animacion de movimiento
-        animator.SetFloat("Look X", lookX);
-        animator.SetFloat("Look Y", lookY);
 
     }
     private void MoverJugador()
     {
+        Vector2 movimiento = new Vector2(horizontal,vertical);
+       
+        if (movimiento.x != 0.0f || movimiento.y != 0.0f)
+        {
+            lookDirection.Set(movimiento.x, movimiento.y);
+            lookDirection.Normalize();
+        }
+        // Animaciones
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", movimiento.magnitude);
+
         position = rb2d.position;
-        position.x = position.x + velocidad * horizontal;
-        position.y = position.y + velocidad * vertical;
+        //position.x = position.x + velocidad * horizontal;
+        //position.y = position.y + velocidad * vertical;
+        position = position + movimiento * velocidad;
         //transform.position = position;
         rb2d.MovePosition(position);
     }
