@@ -56,16 +56,9 @@ public class PlayerController : MonoBehaviour
         {
             lookX = horizontal;
             lookY = 0;
-            animator.SetFloat("Speed", horizontal);
+            animator.SetFloat("Speed", horizontal < 0 ? horizontal * -1 : horizontal);
 
-        }
-        if (horizontal < 0)
-        {
-            gameObject.transform.localScale = new Vector3(-1, transform.localScale.y);
-        }
-        else
-        {
-            gameObject.transform.localScale = new Vector3(1, transform.localScale.y);
+
         }
         vertical = Input.GetAxis("Vertical");
         if (vertical != 0)
@@ -73,6 +66,7 @@ public class PlayerController : MonoBehaviour
             lookY = vertical;
             lookX = 0;
             animator.SetFloat("Speed", vertical);
+
         }
         //Animacion de movimiento
         animator.SetFloat("Look X", lookX);
