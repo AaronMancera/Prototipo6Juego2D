@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     [Header("Vida y reaparacion")]
     [SerializeField] private bool vivo;
     [SerializeField] private float tiempoReparacion;
+    [Header("Animaciones")]
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class EnemyController : MonoBehaviour
         horizontal = true;
         vivo = true;
         tiempoReparacion = 0;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -76,12 +79,18 @@ public class EnemyController : MonoBehaviour
         {
             nuevaPosicion.y = nuevaPosicion.y + velocidad * direccion;
         }
+        animator.SetFloat("Look X", direccion);
+        animator.SetFloat("Look Y", giros);
+        animator.SetFloat("Speed", nuevaPosicion.magnitude);
         rb2d.MovePosition(nuevaPosicion);
     }
     public void Muerto()
     {
         vivo = false;
         rb2d.simulated = false;
+        animator.SetFloat("Speed", 0);
+
+        animator.SetTrigger("Fix");
 
     }
 
